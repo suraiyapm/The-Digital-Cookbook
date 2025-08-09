@@ -1,12 +1,28 @@
 import 'dotenv/config';
-import mongoose from 'mongoose';
-import connectionDB from './db.js';
+import {connect, close} from './db.js';
 import Recipe from './models/recipe.js';
+
+async function main() {
+
+    await connect();
+
+    await Recipe.deleteMany({title: "Classic Tomato Soup"});
+    // adding the above line in order to strictly follow HW instructions, but not end up with duplicates
+    // (Strictly meaning this rather than creating only if one does not exist.)
+
+    await createRecipe();
+
+    await updateRecipeDescription("Classic Tomato Soup", "This is the updated description! Soup.");
+
+    await deleteRecipe("Classic Tomato Soup");
+
+    await close();
+}
 
 async function createRecipe() {
     const recipe = new Recipe({
         title: "Classic Tomato Soup",
-        description: "A simple and delivious homemade tomato soup.",
+        description: "A simple and delicious homemade tomato soup.",
         ingredients: ["Tomatoes", "Onion", "Garlic", "Vegetable Broth", "Olive Oil"],
         instructions: "1. Saute onions and garlic. 2. Add tomatoes and broth. 3. Simmer and blend.",
         prepTimeInMinutes: 30
@@ -42,3 +58,5 @@ async function deleteRecipe(title) {
         console.log('unsuccessful deletion. your title was:', title);
     }
 }
+
+main();
