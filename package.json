@@ -1,0 +1,24 @@
+{
+  "name": "the-digital-cookbook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suraiyapm/The-Digital-Cookbook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suraiyapm/The-Digital-Cookbook/issues"
+  },
+  "homepage": "https://github.com/suraiyapm/The-Digital-Cookbook#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "mongoose": "^8.17.1"
+  }
+}
