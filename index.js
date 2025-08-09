@@ -1,7 +1,7 @@
-require('dotenv').config();
+import 'dotenv/config';
 import mongoose from 'mongoose';
-import connectionDB from './db';
-import Recipe from './models/recipe';
+import connectionDB from './db.js';
+import Recipe from './models/recipe.js';
 
 async function createRecipe() {
     const recipe = new Recipe({
@@ -21,7 +21,7 @@ async function findAllRecipes() {
 }
 
 async function findRecipeByTitle(title) {
-    const relevantRecipe = await Recipe.findOne();
+    const relevantRecipe = await Recipe.findOne({title});
     console.log('resulting recipe:', relevantRecipe);
 }
 
@@ -35,7 +35,7 @@ async function updateRecipeDescription(title, newDescription) {
 }
 
 async function deleteRecipe(title) {
-    const deletionStatus = Recipe.findOneAndDelete({title:title});
+    const deletionStatus = await Recipe.findOneAndDelete({title:title});
     if (deletionStatus) {
         console.log('success! dis one:', title);
     } else {

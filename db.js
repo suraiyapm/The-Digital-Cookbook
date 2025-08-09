@@ -1,5 +1,6 @@
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+import {MongoClient, ServerApiVersion } from 'mongodb';
+
 const uri = "mongodb+srv://suraiyapmark:ZyAl6XJBrlBQnLBl@cookbook.c1tgndg.mongodb.net/?retryWrites=true&w=majority&appName=Cookbook";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -11,7 +12,7 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
+async function connectionDB() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
@@ -23,4 +24,6 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+connectionDB().catch(console.dir);
+
+export default connectionDB;
